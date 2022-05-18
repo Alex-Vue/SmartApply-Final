@@ -1,0 +1,65 @@
+{% load static %}
+<html>
+<head>
+    <title>
+        Profile
+    </title>
+    <link rel="stylesheet" href="{% static 'css/users/profile.css' %}">
+</head>
+
+<body>
+ <div class="topnav">
+
+      <button onclick style="float: right">
+        <a href="/log-out">
+          Log out
+        </a>
+      </button>
+      <button onclick style="float: right">
+        <a href="/user-profile">{{ request.session.user.User_name }}</a>
+      </button>
+     <button onclick>
+         <a href="/home">
+             Home
+         </a>
+     </button>
+      <button>
+        <a href="/cal">
+          Calendar
+        </a>
+      </button>
+      <button onclick>
+        <a href="/important-files">
+          Important Files
+        </a>
+      </button>
+      <button onclick>
+        <a href="/process-of-applications">
+          Process of Applications
+        </a>
+      </button>
+    </div>
+
+<div class="container">
+  <div style="text-align:center">
+    <h2>{{ request.session.user.User_name }}'s Profile</h2>
+  </div>
+  <div class="row">
+    <div class="column">
+        <img src="{% static 'css/users/profile-test.jpg' %}" style="width:100%">
+    </div>
+    <div class="column">
+      <form action="/action_page.php">
+          <p>Username: {{ request.session.user.User_name }}</p>
+          <p>First Name: {{ request.session.user.First_name }}</p>
+          <p>Last Name: {{ request.session.user.Last_name }}</p>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+
+<br>
