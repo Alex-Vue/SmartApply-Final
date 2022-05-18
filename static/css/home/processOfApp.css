@@ -1,3 +1,27 @@
+.topnav {
+  overflow: hidden;
+  background-color: #ebebde;
+}
+
+/* Style the topnav links */
+.topnav button {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  
+}
+
+/* Change color on hover */
+.topnav button:hover {
+    font-family: candara;
+    font-weight: bold;
+    background-color: #ebebde;
+    color: black;
+}
+
 .kanban{
     display: flex;
     padding: 30px;
@@ -25,8 +49,30 @@
     user-select: none;
 }
 
+h1 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: white;
+    user-select: none;
+}
+
+#companies {
+    margin-bottom: 20px;
+    font-size: 30px;
+    user-select: none;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: white;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 6px;
+}
+
 .kanban_item-input{
-    padding: 10px 15px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
     box-sizing: border-box;
     background: white;
     border-radius: 6px;

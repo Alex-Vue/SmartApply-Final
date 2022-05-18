@@ -4,24 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content = "IE=edge">
     <meta name = "viewport" content = "width=device-with, initial-scale = 1.0">
-        <title>Smart Apply</title>
-        Process of Applications
+        <title>Process of Applications</title>
 
         <link href="{% static 'css/home/processOfApp.css' %}" rel="stylesheet" type="text/css"/>
   </head>
 
   <body>
-    <div class="kanban">
-{#        <div class="kanban_column">#}
-{#            <div class = "kanban_column-title"> TO DO !</div>#}
-{#            <div class = "kanban_items">#}
-{#                <div contenteditable class = "kanban_item-input">Elan</div>#}
-{#                <div class = "kanban_dropzone"></div>#}
-{#            </div>#}
-{#            <button class="kanban_add-item" type="button">+ Add</button>#}
-{#        </div>#}
+
+    
+           <div class="topnav">
+
+      <button onclick style="float: right">
+        <a href="/log-out">
+          Log out
+        </a>
+      </button>
+      <button onclick style="float: right">
+        <a href="/user-profile">{{ request.session.user.User_name }}</a>
+      </button>
+      <button onclick>
+        <a href="/home">
+            Home
+        </a>
+      </button>
+      <button>
+        <a href="/cal">
+          Calendar
+        </a>
+      </button>
+      <button onclick>
+        <a href="/important-files">
+          Important Files 
+        </a>
+      </button>
+      <button onclick>
+        <a href="/process-of-applications">
+          Process of Applications
+        </a>
+      </button>
     </div>
 
+
+    
+    <div class="kanban">
+        <div class="kanban_column">
+            <div class = "kanban_items">
+              <h1>Companies:</h1>
+                  <table id="companies">
+                    {% for company in companies %}
+                    <tr>
+                      <td>{{company.name}}
+                      </td>
+                      <td>
+                        <a href="delete/{{company.name}}"><button>X</button></a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+
+              
+              <form method="post">
+                <div>
+                   <input type="text" class="kanban_item-input" name="name" required/>
+                </div>
+                <div class = "kanban_dropzone"></div>
+                </div>
+              <button class="kanban_add-item" type="submit">
+                Add
+              </button>
+              </form>
+        </div>
+    </div>
+
+
+
+
+    
+
+
+  
     <script src = "{% static 'js/home/processOfApp.js' %}" type = "module"></script>
 
   </body>

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, JsonResponse, Http404, HttpResponse
 from django.http import JsonResponse
-from users.models import User, Calendar, Document
+from users.models import User, Calendar, Document, Company
 from django.shortcuts import render
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -276,4 +276,22 @@ def deleteFile(request, document):
   return HttpResponseRedirect(reverse('importantfiles'))
 
 def applications(request):
-    return render(request, 'home/processOfApp.html')
+  if request.method == 'POST':
+    Company.objects.create(name=request.POST['name'])
+    companies = Company.objects.all().values()
+    return render(request, 'home/processOfApp.html', {
+      'companies': companies
+    })
+  else:
+    companies = Company.objects.all().values()
+    return render(request, 'home/processOfApp.html', {
+      'companies': companies
+    })
+
+
+def deleteCompany(request, company):
+  comp = Company.objects.get(name=company)
+  if comp:
+    comp.delete()
+    return HttpResponseRedirect(reverse('companies'))
+    
